@@ -8,7 +8,7 @@ var _ = require('lodash');
 /* Function for yelp call
  * ------------------------
  * options: object with params to search, support 'term', 'location'
- * consumer_key, token, consumer_secret, token_secret
+ * 'consumer_key', 'token', 'consumer_secret', 'token_secret'
  * completed: callback(responseJSON)
  * failed: callback(error)
  */
@@ -57,10 +57,7 @@ var yelp_search = function(options, completed, failed) {
   /* Add the query string to the url */
   var apiURL = url+'?'+paramURL;
 
-  /* Then we use request to send make the API Request */
-  // request(apiURL, function(error, response, body){
-  //   return callback(error, response, body);
-  // });
+  /* Then we use fetch to send make the API Request */
   fetch(apiURL, {
     method: method,
     headers: {
@@ -86,10 +83,3 @@ var yelp_search = function(options, completed, failed) {
 module.exports = {
   search: yelp_search
 };
-
-// yelp_search({
-//   consumer_key: 'qzHZVCjAd2qKUf9c0b456A',
-//   consumer_secret: '6GKStGgA3cMxji1TdVS2JVMcVKQ',
-//   token: '1d5BY73AA3hkGcxlLgT_a1hZToSg-d73',
-//   token_secret: 'x8xtwq2OVR6BlXNt73EExgFP9G0',
-// }, function(json){console.log(json);}, function(error){console.log(error);});
