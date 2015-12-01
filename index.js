@@ -1,9 +1,10 @@
 /* require the modules needed */
 var oauthSignature = require('oauth-signature');
 var n = require('nonce')();
-var fetch = require('node-fetch');
+var request = require('request');
 var qs = require('querystring');
 var _ = require('lodash');
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 /* Function for yelp call
  * ------------------------
@@ -12,7 +13,7 @@ var _ = require('lodash');
  * completed: callback(responseJSON)
  * failed: callback(error)
  */
-var yelp_search = function(options, completed, failed) {
+var yelp_search = function(options, callback) {
 
   /* The type of request */
   var method = 'GET';
@@ -23,7 +24,7 @@ var yelp_search = function(options, completed, failed) {
   /* We can setup default parameters here */
   var default_parameters = {
     term: 'food',
-    location: 'San+Francisco',
+    // location: 'San+Francisco',
     sort: '2'
   };
 
@@ -58,26 +59,9 @@ var yelp_search = function(options, completed, failed) {
   var apiURL = url+'?'+paramURL;
 
   /* Then we use fetch to send make the API Request */
-  fetch(apiURL, {
-    method: method,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    }
-  }).then((response) => response.json())
-    .then((responseJSON) => {
-      // console.log(responseJSON);
-      // Failed if response status is error
-      if (responseJSON.status === 'error') { failed(responseJSON); }
-      else {
-        // console.log(responseJSON);
-        completed(responseJSON);
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      failed(error);
-    })
+  request(apiURL, function(error, response, body){
+    return callback(error, response, body);
+  });
 };
 
 module.exports = {

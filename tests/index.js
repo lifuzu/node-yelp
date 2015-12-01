@@ -15,12 +15,14 @@ var parameters = {
 };
 
 test('yelp search', (t) => {
-  t.plan(3);
-  yelp.search(merge(options, parameters), (data) => {
-    t.equal(typeof data.region, 'object');
-    t.equal(typeof data.total, 'number');
-    t.ok(Array.isArray(data.businesses), 'businesses is array');
-  }, null/*(err) => {
+  t.plan(4);
+  yelp.search(merge(options, parameters), (err, response, body) => {
+    // console.log(response);
+    // console.log(body);
     t.error(err);
-  }*/);
+    var info = JSON.parse(body);
+    t.equal(typeof info.region, 'object');
+    t.equal(typeof info.total, 'number');
+    t.ok(Array.isArray(info.businesses), 'businesses is array');
+  });
 });
