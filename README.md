@@ -45,5 +45,5 @@ CONSUMER_KEY="" CONSUMER_SECRET="" TOKEN="" TOKEN_SECRET="" npm test
 ```
 
 # Thanks:
-https://arian.io/how-to-use-yelps-api-with-node/
-https://github.com/olalonde/node-yelp
+- https://arian.io/how-to-use-yelps-api-with-node/
+- https://github.com/olalonde/node-yelp
