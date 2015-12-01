@@ -1,11 +1,5 @@
 Node.js module for interacting with Yelp's API v2.0
 
-# Install
-
-```
-npm install --save node-yelp-api
-```
-
 # Usage
 
 ```javascript
@@ -18,7 +12,7 @@ var options = {
   consumer_secret: 'consumer-secret',
   token: 'token',
   token_secret: 'token-secret',
-});
+};
 
 // See http://www.yelp.com/developers/documentation/v2/search_api
 var parameters = {
