@@ -3,7 +3,7 @@ Node.js module for interacting with Yelp's API v2.0
 # Install
 
 ```
-npm install --save node-yelp
+npm install --save node-yelp-api
 ```
 
 # Usage
