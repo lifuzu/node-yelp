@@ -11,7 +11,7 @@ npm install --save node-yelp
 ```javascript
 // Request API access: http://www.yelp.com/developers/getting_started/api_access
 var merge = require('merge');
-var yelp = require('node-yelp');
+var yelp = require('node-yelp-api');
 
 var options = {
   consumer_key: 'consumer-key',
